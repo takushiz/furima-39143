@@ -14,7 +14,7 @@
 
 ## Association
 - has_many :items
-- has_many :comments
+- has_many :orders
 
 
 ## Itemsテーブル
@@ -33,11 +33,11 @@
 
 ## Association
 - belongs_to :user
-- has_many :comments
-- has_one :destination
+- has_one :order
+- has_one :address
 
 
-## destinationテーブル
+## addressesテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | integer    | null: false                    |
@@ -52,10 +52,11 @@
 - belongs_to :item
 
 
-## commentsテーブル
+## ordersテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| text                | text       | null: false                    |
+| item_name           | string     | null: false                    |
+| order_date          | timestamp  | null: false                    |
 | user_id             | references | null: false, foreign_key: true |
 | item_id             | references | null: false, foreign_key: true |
 
