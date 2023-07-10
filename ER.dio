@@ -7,8 +7,8 @@
                 <mxCell id="4" value="Usersテーブル" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="80" width="270" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="email（string型, NOT NULL, ユニーク制約）&lt;br&gt;encrypted_password(string型, NOT NULL)&lt;br&gt;nick_name(string型, NOT NULL)&lt;br&gt;first_name(string型, NOT NULL)&lt;br&gt;first_name_kana(string型, NOT NULL)&lt;br&gt;last_name_kana(string型, NOT NULL)&lt;br&gt;birthday(date型, NOT NULL)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="4" vertex="1">
-                    <mxGeometry x="10" y="45" width="260" height="110" as="geometry"/>
+                <mxCell id="5" value="email（string型, NOT NULL, ユニーク制約）&lt;br&gt;encrypted_password(string型, NOT NULL)&lt;br&gt;nick_name(string型, NOT NULL)&lt;br&gt;first_name(string型, NOT NULL)&lt;br&gt;last_name(string型, NOT NULL)&lt;br&gt;first_name_kana(string型, NOT NULL)&lt;br&gt;last_name_kana(string型, NOT NULL)&lt;br&gt;birthday(date型, NOT NULL)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="4" vertex="1">
+                    <mxGeometry x="10" y="35" width="260" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="itemsテーブル" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="530" y="85" width="270" height="190" as="geometry"/>
