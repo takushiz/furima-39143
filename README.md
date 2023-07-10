@@ -13,7 +13,6 @@
 ## Association
 - has_many :items
 - has_many :orders
-- has_one :address
 
 
 ## Itemsテーブル
@@ -23,7 +22,7 @@
 | description         | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
-| charges_id          | integer    | null: false                    |
+| charge_id          | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | delivery_date_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
@@ -44,11 +43,10 @@
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
 | tel                 | string     | null: false                    |
-| user                | references | null: false, foreign_key: true |
+| order               | references | null: false, foreign_key: true |
 
 ## Association
-- belongs_to :user
-- has_one :order
+- belongs_to :order
 
 
 ## ordersテーブル
@@ -56,9 +54,8 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
-| address             | references | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one    :address
