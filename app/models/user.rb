@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :nick_name, :first_name_kana, :last_name_kana, :birthday, presence: true
+  validates :nick_name, :birthday, presence: true
   with_options presence: true, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width character"} do
     validates :first_name
     validates :last_name
