@@ -43,8 +43,18 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
+      it "カテゴリーの選択が「---」(id:0)では出品できない" do
+        @item.category_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
       it "商品の状態を選択していないと出品できない" do
         @item.condition = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
+      end
+      it "商品の状態の選択が「---」(id:0)では出品できない" do
+        @item.condition_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
@@ -53,13 +63,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Charge can't be blank")
       end
+      it "配送料の選択が「---」(id:0)では出品できない" do
+        @item.charge_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Charge can't be blank")
+      end
       it "発送元の地域を選択していないと出品できない" do
         @item.prefecture = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
+      it "発送元の選択が「---」(id:0)では出品できない" do
+        @item.prefecture_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
       it "発送までの日数を選択していないと出品できない" do
         @item.delivery_date = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery date can't be blank")
+      end
+      it "発送までの日数の選択が「---」(id:0)では出品できない" do
+        @item.delivery_date_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery date can't be blank")
       end
