@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @items = Item.includes(:order).order("created_at DESC")
@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(items_params)
-    
     if @item.save
       redirect_to root_path
     else
@@ -23,6 +22,9 @@ class ItemsController < ApplicationController
     end
   end
   
+  def show
+    @item = Item.find(params[:id])
+  end
 
   private
 
