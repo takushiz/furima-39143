@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <!-- sold outを表示 -->
-      <% if @item.order.present? && @item.id == @item.order.item_id %>
+      <!--<% if @item.order.present? && @item.id == @item.order.item_id %> -->
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -35,9 +35,9 @@
 
       <!-- 商品が購入前なら表示 -->
       <% if user_signed_in? && current_user.id != @item.user_id %>
-        <% unless @item.order&.item_id %>
+      <!--  <% unless @item.order&.item_id %>
         <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-        <% end %>
+        <% end %> -->
       <% end %>
       <!-- 商品が購入前なら表示 -->
     
