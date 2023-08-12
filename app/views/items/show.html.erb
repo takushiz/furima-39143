@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <!-- sold outを表示 -->
-      <!--<% if @item.order.present? && @item.id == @item.order.item_id %> -->
+      <% if @item.order.present? && @item.id == @item.order.item_id %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -26,7 +26,7 @@
     </div>
 
     <!-- ログインユーザーと出品者が同じ場合表示 -->
-    <% if user_signed_in? && current_user.id == @item.user_id %>
+    <% if user_signed_in? && current_user.id == @item.user_id && !@order %>
       <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
@@ -34,10 +34,10 @@
     <!-- ログインユーザーと出品者が同じ場合表示 -->
 
       <!-- 商品が購入前なら表示 -->
-      <% if user_signed_in? && current_user.id != @item.user_id %>
-      <!--  <% unless @item.order&.item_id %>
-        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-        <% end %> -->
+      <% if (user_signed_in? && current_user.id != @item.user_id) && !@order%>
+      <% unless @item.order&.item_id %>
+        <%= link_to "購入画面に進む", item_orders_path(@item) ,class:"item-red-btn"%>
+        <% end %>
       <% end %>
       <!-- 商品が購入前なら表示 -->
     
