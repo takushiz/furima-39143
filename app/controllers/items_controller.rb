@@ -1,12 +1,11 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_orders, only: [:show, :edit]
 
   def index
-    @items = Item.includes(:order).order('created_at DESC')
+    @items = Item.includes(:order).order("created_at DESC")
   end
-
+  
   def new
     if user_signed_in?
       @item = Item.new
@@ -23,12 +22,13 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def show
+    
   end
 
   def edit
-    if @order
+    if @item.order.present?
       redirect_to action: :index
     elsif current_user.id == @item.user_id
       set_item
@@ -58,23 +58,18 @@ class ItemsController < ApplicationController
 
   def items_params
     params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id,
-                                 :charge_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
+      :charge_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
   end
 
   def move_to_index
-    return if user_signed_in?
-
-    redirect_to action: :index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
 
-  def set_orders
-    orders = Order.all
-    return unless orders.find_by(item_id: @item.id)
 
-    @order = orders.find(@item.id)
-  end
 end
