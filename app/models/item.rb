@@ -1,4 +1,3 @@
-
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
@@ -16,15 +15,15 @@ class Item < ApplicationRecord
     validates :prefecture_id
   end
 
-  with_options presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }, format: { with: /\A[1-9]\d*\z/, message: "is invalid. Input half-width characters" } do
+  with_options presence: true,
+               numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }, format: { with: /\A[1-9]\d*\z/, message: 'is invalid. Input half-width characters' } do
     validates :price
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :category
-    belongs_to :condition
-    belongs_to :charge
-    belongs_to :delivery_date
-    belongs_to :prefecture
-  
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :charge
+  belongs_to :delivery_date
+  belongs_to :prefecture
 end

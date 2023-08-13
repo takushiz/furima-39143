@@ -24,10 +24,13 @@ class ItemsController < ApplicationController
   end
   
   def show
+    
   end
 
   def edit
-    if current_user.id == @item.user_id
+    if @item.order.present?
+      redirect_to action: :index
+    elsif current_user.id == @item.user_id
       set_item
     else
       redirect_to action: :index
@@ -67,5 +70,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
 
 end
